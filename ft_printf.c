@@ -1,5 +1,5 @@
 #include "ft_printf.h"
-
+//CORRECT "p" i have to use hexadecimal value
 static int	return_arg(va_list args, char type, int i)
 {
 	char formats[10];
@@ -14,7 +14,9 @@ static int	return_arg(va_list args, char type, int i)
 	else if (type == 'd')
 		ft_putnbr_fd(va_arg(args, int), 1);
 	else if (type == 'u')
-		ft_putnbr_u(va_arg(args, unsigned int), 1);
+		ft_putnbu_fd(va_arg(args, unsigned int), 1);
+	else if (type == 'p')
+		ft_puthex_fd(va_arg(args, int), 1);
 	return (i + 1);
 }
 
@@ -47,8 +49,9 @@ int	ft_printf(const char * text, ...)
 
 int	main()
 {
-	unsigned int val = 4294967295;
-	ft_printf("Fazendo %c novo teste: %u", '1', val);
-	printf("Fazendo %c novo teste: %u", '1', val);
+	int val = 200;
+	int *pointer = &val;
 
+	ft_printf("Fazendo %c novo teste: %p", '1', pointer);
+	printf("Fazendo %c novo teste: %p\n", '1', pointer);
 }

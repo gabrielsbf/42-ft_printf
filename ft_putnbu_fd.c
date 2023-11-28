@@ -1,6 +1,6 @@
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_u(unsigned int n, int fd)
+void	ft_putnbu_fd(unsigned int n, int fd)
 {
 	if (n > 9)
 	{
