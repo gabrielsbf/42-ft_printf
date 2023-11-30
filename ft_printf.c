@@ -52,6 +52,6 @@ int	main()
 	int val = 200;
 	int *pointer = &val;
 
-	ft_printf("Fazendo %c novo teste: %p", '1', pointer);
-	printf("Fazendo %c novo teste: %p\n", '1', pointer);
+	ft_printf("FT_PRINTF: Fazendo %c novo teste: hexa: %p, dec : %d", '1', pointer, pointer);
+	printf("PRINTF: Fazendo %c novo teste: hexa : %p\n", '1', pointer);
 }
