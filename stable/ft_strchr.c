@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrfern <gabrfern@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 20:16:42 by gabrfern          #+#    #+#             */
-/*   Updated: 2023/10/31 20:20:11 by gabrfern         ###   ########.fr       */
+/*   Created: 2023/10/18 17:58:17 by gabrfern          #+#    #+#             */
+/*   Updated: 2023/10/18 17:58:18 by gabrfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft/libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+char	*ft_strchr(const char *s, int c)
 {
-	write(fd, &c, 1);
+	char	*strc;
+	int		i;
+
+	strc = (char *)s;
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+			return ((char *)&strc[i]);
+		i++;
+	}
+	if (s[i] == c)
+		return ((char *)&strc[i]);
+	return (0);
 }
