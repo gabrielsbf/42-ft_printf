@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putchar_fdnr(char c, int fd)
+void	ft_putchar_count(char c, int fd)
 {
 	write(fd, &c, 1);
 }

@@ -1,12 +1,12 @@
 #include "ft_printf.h"
 //CORRECT "p" i have to use hexadecimal value
+//Conclusão - Vou colocar as funções para em void ainda
+// com o parametro "result" como memória do ponteiro para armazenar
+// o valor
 
 static int	return_arg(va_list args, char type, int i)
 {
-	char formats[10];
-
-	ft_strlcpy(formats, "cspdiuxX%", 10);
-	if (!ft_strchr(formats, type))
+	if (!ft_strchr("cspdiuxX%", type))
 		return (i - 1);
 	if (type == 'c')
 		ft_putchar_fd(va_arg(args, int), 1);
@@ -41,12 +41,11 @@ int	ft_printf(const char * text, ...)
 		if(text[i] == '%' && text[i++] != '\0')
 		{
 			i = return_arg(args, text[i], i);
-			if (text[i] != '%')
-				result++;
 		}
 		if(text[i] == '\0')
 			break;
 		ft_putchar_fd(text[i], 1);
+		result++;
 		i++;
 	}
 	va_end(args);
@@ -58,7 +57,8 @@ int	main()
 	#include <limits.h>
 	int val = 200;
 	int *pointer = &val;
-
-	ft_printf("FT_PRINTF: Fazendo %X novo teste %p\n", 15, pointer);
-	printf("PRINTF: Fazendo %X novo teste %p\n", 15, pointer);
+	int ft_printf_result = ft_printf("FT_PRINTF: Fazendo %d novo teste %s\n", 15, "pointer");
+	printf("%d\n", ft_printf_result);
+	int printf_result = printf("PRINTF: Fazendo %d novo teste %s\n", 15, "pointer");
+	printf("%d\n", printf_result);
 }
