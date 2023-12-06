@@ -10,14 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd, int *result)
 {
 	int	len;
 
 	if (!s)
-		return ;
-	len = ft_strlen(s);
-	write(fd, s, len);
+	{
+		write(1, "(null)", 6);
+		*result = *result + 6;
+	}
+	else{
+		len = ft_strlen(s);
+		*result = *result + len;
+		write(fd, s, len);
+	}
 }
