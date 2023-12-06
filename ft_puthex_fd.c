@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_puthex_fd(unsigned long n, int fd, int prefix, int *result)
+void	ft_puthex_fd(unsigned long long n, int fd, int prefix, int *result)
 {
 	char	replace_v[17];
 
@@ -37,7 +37,7 @@ void	ft_puthex_fd(unsigned long n, int fd, int prefix, int *result)
 		ft_putchar_fd(replace_v[n % 16], fd, result);
 }
 
-void	ft_puthex_upper_fd(unsigned long n, int fd, int *result)
+void	ft_puthex_upper_fd(unsigned long long n, int fd, int *result)
 {
 	char	replace_v[17];
 

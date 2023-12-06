@@ -27,9 +27,9 @@ static int	return_arg(va_list args, char type, int *result)
 	else if (type == 'u')
 		ft_putnbu_fd(va_arg(args, unsigned int), 1, result);
 	else if (type == 'x')
-		ft_puthex_fd(va_arg(args, unsigned long), 1, 0, result);
+		ft_puthex_fd(va_arg(args, unsigned long long), 1, 0, result);
 	else if (type == 'X')
-		ft_puthex_upper_fd(va_arg(args, unsigned long), 1, result);
+		ft_puthex_upper_fd(va_arg(args, unsigned long long), 1, result);
 	else if (type == '%')
 		ft_putchar_fd('%', 1, result);
 	return (1);
