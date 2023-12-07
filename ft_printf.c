@@ -21,15 +21,15 @@ static int	return_arg(va_list args, char type, int *result)
 	else if (type == 's')
 		ft_putstr_fd(va_arg(args, char *), 1, result);
 	else if (type == 'p')
-		ft_puthex_fd(va_arg(args, unsigned long ), 1, 1, result);
+		ft_puthex_fd(va_arg(args, unsigned long), 1, 1, result);
 	else if (type == 'd' || type == 'i')
 		ft_putnbr_fd(va_arg(args, int), 1, result);
 	else if (type == 'u')
 		ft_putnbu_fd(va_arg(args, unsigned int), 1, result);
 	else if (type == 'x')
-		ft_puthex_fd(va_arg(args, unsigned long long), 1, 0, result);
+		ft_puthex_fd(va_arg(args, unsigned long), 1, 0, result);
 	else if (type == 'X')
-		ft_puthex_upper_fd(va_arg(args, unsigned long long), 1, result);
+		ft_puthex_upper_fd(va_arg(args, unsigned long), 1, result);
 	else if (type == '%')
 		ft_putchar_fd('%', 1, result);
 	return (1);
@@ -65,14 +65,14 @@ int	ft_printf(const char *text, ...)
 	return (result);
 }
 
-// int	main(void)
-// {
-// 	#include <stdio.h>
-// 	#include <limits.h>
-// 	// int val = 200;
-// 	// int *pointer = &val;
-// 	int ft_printf_result = ft_printf("%c%c%c%c%c", 'a', 'i', 'u', 'e', 'o');
-// 	printf("%d\n", ft_printf_result);
-// 	int printf_result = printf("%c%c%c%c%c", 'a', 'i', 'u', 'e', 'o');
-// 	printf("%d\n", printf_result);
-// }
+int	main(void)
+{
+	#include <stdio.h>
+	#include <limits.h>
+	// int val = 200;
+	// int *pointer = &val;
+	int ft_printf_result = ft_printf("ULONG = %x -- UINT = %x\n", 9223372036854775807LL),UINT_MAX);
+	printf("%d\n", ft_printf_result);
+	int printf_result = printf("ULONG = %x -- UINT = %x\n", 9223372036854775807LL,UINT_MAX);
+	printf("%d\n", printf_result);
+}
