@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_r.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrfern <gabrfern@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 19:13:40 by gabrfern          #+#    #+#             */
-/*   Updated: 2023/10/23 19:13:41 by gabrfern         ###   ########.fr       */
+/*   Created: 2023/10/31 20:16:42 by gabrfern          #+#    #+#             */
+/*   Updated: 2023/10/31 20:20:11 by gabrfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_putchar_r(char c, int fd, int *result)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (size != 0)
-	{
-		while (src[i] != '\0' && size > i + 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[i] != '\0')
-		i++;
-	return (i);
+	write(fd, &c, 1);
+	*result = *result + 1;
 }

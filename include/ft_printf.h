@@ -17,12 +17,12 @@
 # include <unistd.h>
 
 int		ft_printf(const char *text, ...);
-void	ft_putnbu_fd(unsigned int n, int fd, int *result);
-void	ft_putnbr_fd(int n, int fd, int *result);
-void	ft_putstr_fd(char *s, int fd, int *result);
-void	ft_puthex_fd(unsigned long long n, int fd, int prefix, int *result);
-void	ft_puthex_upper_fd(unsigned long long n, int fd, int *result);
-void	ft_putchar_fd(char c, int fd, int *result);
+void	ft_putnbu_r(unsigned int n, int fd, int *result);
+void	ft_putnbr_r(int n, int fd, int *result);
+void	ft_putstr_r(char *s, int fd, int *result);
+void	ft_puthex_r(unsigned long long n, int fd, int prefix, int *result);
+void	ft_puthex_upper_r(unsigned long long n, int fd, int *result);
+void	ft_putchar_r(char c, int fd, int *result);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_r.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrfern <gabrfern@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:59:24 by gabrfern          #+#    #+#             */
-/*   Updated: 2023/10/18 17:59:25 by gabrfern         ###   ########.fr       */
+/*   Created: 2023/10/31 20:16:42 by gabrfern          #+#    #+#             */
+/*   Updated: 2023/10/31 20:20:15 by gabrfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_putstr_r(char *s, int fd, int *result)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	while (s[count] != '\0')
-		count++;
-	return (count);
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		*result = *result + 6;
+	}
+	else{
+		len = ft_strlen(s);
+		*result = *result + len;
+		write(fd, s, len);
+	}
 }

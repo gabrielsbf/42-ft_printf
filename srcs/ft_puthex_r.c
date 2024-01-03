@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex_fd.c                                     :+:      :+:    :+:   */
+/*   ft_puthex_r.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrfern <gabrfern@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-void	ft_puthex_fd(unsigned long long n, int fd, int prefix, int *result)
+void	ft_puthex_r(unsigned long long n, int fd, int prefix, int *result)
 {
 	char	replace_v[17];
 
@@ -24,29 +24,29 @@ void	ft_puthex_fd(unsigned long long n, int fd, int prefix, int *result)
 			*result = *result + 5;
 			return ;
 		}
-		ft_putstr_fd("0x", 1, result);
+		ft_putstr_r("0x", 1, result);
 		prefix = 0;
 	}
 	ft_strlcpy(replace_v, "0123456789abcdef", 17);
 	if (n >= 16)
 	{
-		ft_puthex_fd(n / 16, fd, prefix, result);
-		ft_puthex_fd(n % 16, fd, prefix, result);
+		ft_puthex_r(n / 16, fd, prefix, result);
+		ft_puthex_r(n % 16, fd, prefix, result);
 	}
 	else
-		ft_putchar_fd(replace_v[n % 16], fd, result);
+		ft_putchar_r(replace_v[n % 16], fd, result);
 }
 
-void	ft_puthex_upper_fd(unsigned long long n, int fd, int *result)
+void	ft_puthex_upper_r(unsigned long long n, int fd, int *result)
 {
 	char	replace_v[17];
 
 	ft_strlcpy(replace_v, "0123456789ABCDEF", 17);
 	if (n >= 16)
 	{
-		ft_puthex_upper_fd(n / 16, fd,  result);
-		ft_puthex_upper_fd(n % 16, fd, result);
+		ft_puthex_upper_r(n / 16, fd,  result);
+		ft_puthex_upper_r(n % 16, fd, result);
 	}
 	else
-		ft_putchar_fd(replace_v[n % 16], fd, result);
+		ft_putchar_r(replace_v[n % 16], fd, result);
 }

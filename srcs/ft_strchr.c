@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbu_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrfern <gabrfern@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 15:20:05 by gabrfern          #+#    #+#             */
-/*   Updated: 2023/12/06 15:20:06 by gabrfern         ###   ########.fr       */
+/*   Created: 2023/10/18 17:58:17 by gabrfern          #+#    #+#             */
+/*   Updated: 2023/10/18 17:58:18 by gabrfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-void	ft_putnbu_fd(unsigned int n, int fd, int *result)
+char	*ft_strchr(const char *s, int c)
 {
-	if (n > 9)
+	char	*strc;
+	int		i;
+
+	strc = (char *)s;
+	i = 0;
+	while (s[i] != '\0')
 	{
-		ft_putnbu_fd(n / 10, fd, result);
-		ft_putnbu_fd(n % 10, fd, result);
+		if (s[i] == c)
+			return ((char *)&strc[i]);
+		i++;
 	}
-	else
-		ft_putchar_fd(n + '0', fd, result);
+	if (s[i] == c)
+		return ((char *)&strc[i]);
+	return (0);
 }

@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_r.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gabrfern <gabrfern@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:58:17 by gabrfern          #+#    #+#             */
-/*   Updated: 2023/10/18 17:58:18 by gabrfern         ###   ########.fr       */
+/*   Created: 2023/10/31 20:16:42 by gabrfern          #+#    #+#             */
+/*   Updated: 2023/12/06 15:19:59 by gabrfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr_r(int n, int fd, int *result)
 {
-	char	*strc;
-	int		i;
-
-	strc = (char *)s;
-	i = 0;
-	while (s[i] != '\0')
+	if (n == -2147483648)
 	{
-		if (s[i] == c)
-			return ((char *)&strc[i]);
-		i++;
+		ft_putchar_r('-', fd, result);
+		ft_putchar_r('2', fd, result);
+		n = 147483648;
 	}
-	if (s[i] == c)
-		return ((char *)&strc[i]);
-	return (0);
+	if (n < 0)
+	{
+		ft_putchar_r('-', fd, result);
+		n = n * -1;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_r(n / 10, fd, result);
+		ft_putnbr_r(n % 10, fd, result);
+	}
+	else
+	{
+		ft_putchar_r(n + '0', fd, result);
+	}
 }

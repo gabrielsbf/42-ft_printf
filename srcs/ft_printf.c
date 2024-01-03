@@ -10,28 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 static int	return_arg(va_list args, char type, int *result)
 {
 	if (!ft_strchr("cspdiuxX%", type))
 		return (0);
 	if (type == 'c')
-		ft_putchar_fd(va_arg(args, int), 1, result);
+		ft_putchar_r(va_arg(args, int), 1, result);
 	else if (type == 's')
-		ft_putstr_fd(va_arg(args, char *), 1, result);
+		ft_putstr_r(va_arg(args, char *), 1, result);
 	else if (type == 'p')
-		ft_puthex_fd(va_arg(args, unsigned long), 1, 1, result);
+		ft_puthex_r(va_arg(args, unsigned long), 1, 1, result);
 	else if (type == 'd' || type == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1, result);
+		ft_putnbr_r(va_arg(args, int), 1, result);
 	else if (type == 'u')
-		ft_putnbu_fd(va_arg(args, unsigned int), 1, result);
+		ft_putnbu_r(va_arg(args, unsigned int), 1, result);
 	else if (type == 'x')
-		ft_puthex_fd(va_arg(args, unsigned int), 1, 0, result);
+		ft_puthex_r(va_arg(args, unsigned int), 1, 0, result);
 	else if (type == 'X')
-		ft_puthex_upper_fd(va_arg(args, unsigned int), 1, result);
+		ft_puthex_upper_r(va_arg(args, unsigned int), 1, result);
 	else if (type == '%')
-		ft_putchar_fd('%', 1, result);
+		ft_putchar_r('%', 1, result);
 	return (1);
 }
 
@@ -52,13 +52,13 @@ int	ft_printf(const char *text, ...)
 				i++;
 			else
 			{
-				ft_putchar_fd(text[i], 1, &result);
+				ft_putchar_r(text[i], 1, &result);
 				i++;
 			}
 		}
 		if (text[i] == '\0')
 			break ;
-		ft_putchar_fd(text[i], 1, &result);
+		ft_putchar_r(text[i], 1, &result);
 		i++;
 	}
 	va_end(args);
