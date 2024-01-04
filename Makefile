@@ -1,7 +1,8 @@
 NAME=libftprintf.a
 
+SRCS_FLDR=/srcs
 
-RAW_SRCS=$(shell find ./srcs)
+RAW_SRCS=$(shell find .$(SRCS_FLDR))
 
 SRCS=$(filter %.c, $(RAW_SRCS))
 
